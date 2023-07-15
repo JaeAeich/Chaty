@@ -1,7 +1,10 @@
 const express = require('express');
-const chats = require('./data/data');  // Dummy data
+const dotenv = require('dotenv');
+const chats = require('./data/data'); // Dummy data
 
 const app = express();
+// Configure environment variables
+dotenv.config();
 
 app.get('/', (req, res) => {
 	res.send('Welcome to chaty API!');
@@ -17,4 +20,6 @@ app.get('/api/chat/:id', (req, res) => {
 	res.send(id);
 });
 
-app.listen(5000, console.log('Hello from server!'));
+const port = process.env.PORT;
+
+app.listen(port, console.log(`Hello from server at ${port}!`));
