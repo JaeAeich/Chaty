@@ -1,5 +1,5 @@
 const express = require('express');
-const chats = require('../data/data');  // Dummy data
+const chats = require('./data/data');  // Dummy data
 
 const app = express();
 
