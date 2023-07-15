@@ -1,0 +1,24 @@
+# Ignore Node.js build artifacts
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Ignore development server log
+server.log
+
+# Ignore environment variables
+.env
+
+# Ignore client-side build artifacts
+client/build/
+client/node_modules/
+
+# Ignore MongoDB data directory
+data/
+
+# Ignore Visual Studio Code settings
+.vscode/
+
+# Ignore package lock files
+package-lock.json
+yarn.lock
