@@ -1,10 +1,12 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const chats = require('./data/data'); // Dummy data
+const { connectDB } = require('./config/db');
 
 const app = express();
 // Configure environment variables
 dotenv.config();
+connectDB();
 
 app.get('/', (req, res) => {
 	res.send('Welcome to chaty API!');
