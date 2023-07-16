@@ -1,0 +1,39 @@
+.container {
+	max-width: 1240px;
+	margin: 1rem auto;
+	.header {
+		padding: 1rem;
+		text-align: center;
+	}
+	.tabs {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 0.5em;
+
+		.tab {
+			padding: 0.5em 1.5em;
+			cursor: pointer;
+			user-select: none;
+			transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+
+			&:not(:last-child) {
+				margin-right: 1em;
+			}
+
+			&.active {
+				color: var(--color-bg);
+				background-color: var(--color-accent);
+			}
+
+			&:hover {
+				border-radius: 0.6em;
+				background-color: var(--color-accent);
+			}
+
+			&:active {
+				background-color: var(--color-cta);
+			}
+		}
+	}
+}

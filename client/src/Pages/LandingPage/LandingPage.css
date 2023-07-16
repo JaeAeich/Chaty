@@ -1,0 +1,36 @@
+.container {
+  max-width: 1240px;
+  margin: 1rem auto;
+}
+.container .header {
+  padding: 1rem;
+  text-align: center;
+}
+.container .tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5em;
+}
+.container .tabs .tab {
+  padding: 0.5em 1.5em;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+}
+.container .tabs .tab:not(:last-child) {
+  margin-right: 1em;
+}
+.container .tabs .tab.active {
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+}
+.container .tabs .tab:hover {
+  border-radius: 0.6em;
+  background-color: var(--color-accent);
+}
+.container .tabs .tab:active {
+  background-color: var(--color-cta);
+}/*# sourceMappingURL=LandingPage.css.map */
