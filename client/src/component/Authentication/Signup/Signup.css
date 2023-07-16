@@ -1,0 +1,47 @@
+.signup-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--color-bg);
+  border-radius: 4px;
+}
+.signup-form .form-group {
+  margin-bottom: 20px;
+}
+.signup-form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+.signup-form .form-group input[type=text],
+.signup-form .form-group input[type=email],
+.signup-form .form-group input[type=password] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 4px;
+}
+.signup-form .pfp-input label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.signup-form .pfp-input label input {
+  display: none;
+}
+.signup-form .pfp-input label .pfp-image {
+  height: 4rem;
+  border-radius: 50%;
+  width: 4rem;
+}
+.signup-form button[type=submit] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--color-cta);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}/*# sourceMappingURL=Signup.css.map */
