@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import pfp from '../../../assets/pfp.png';
+import axios from 'axios';
 import './Signup.css';
 
 function Signup() {
@@ -10,6 +12,7 @@ function Signup() {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 	const [cPassword, setCPassword] = useState();
+	const navigate = useNavigate();
 
 	const handlePfpChange = (event) => {
 		const file = event.target.files[0];
@@ -57,6 +60,60 @@ function Signup() {
 			alert('Please Select an Image!');
 			setPicLoading(false);
 			return;
+		}
+	};
+
+	const submitHandler = async () => {
+		setPicLoading(true);
+
+		if (!name || !email || !password || !cPassword) {
+			alert('Please fill in all the fields');
+			setPicLoading(false);
+			return;
+		}
+
+		if (password !== cPassword) {
+			alert({
+				title: 'Passwords do not match',
+				status: 'warning',
+				duration: 5000,
+				isClosable: true,
+				position: 'bottom',
+			});
+			setPicLoading(false);
+			return;
+		}
+
+		console.log(name, email, password, pic);
+
+		try {
+			const config = {
+				headers: {
+					'Content-type': 'application/json',
+				},
+			};
+
+			const { data } = await axios.post(
+				'http://localhost:4000/api/user',
+				{
+					name,
+					email,
+					password,
+					pic,
+				},
+				config
+			);
+
+			console.log(data);
+
+			alert('Registration Successful');
+
+			localStorage.setItem('userInfo', JSON.stringify(data));
+			setPicLoading(false);
+			history.push('/chats');
+		} catch (error) {
+			alert('Error occurred!');
+			setPicLoading(false);
 		}
 	};
 
@@ -126,11 +183,15 @@ function Signup() {
 					/>
 				</div>
 				{picLoading && (
-					<button type='submit' disabled>
+					<button type='submit' onClick={submitHandler}>
 						Wait Please
 					</button>
 				)}
-				{!picLoading && <button type='submit'>Sign Up</button>}
+				{!picLoading && (
+					<button type='submit' onClick={submitHandler}>
+						Sign Up
+					</button>
+				)}
 			</form>
 		</div>
 	);
