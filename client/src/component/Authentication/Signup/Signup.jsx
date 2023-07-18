@@ -111,7 +111,7 @@ function Signup() {
 
 			localStorage.setItem('userInfo', JSON.stringify(data));
 			setPicLoading(false);
-			history.push('/chats');
+			history.push('/');
 		} catch (error) {
 			toast.error('Some error occured', {
 				position: toast.POSITION.TOP_RIGHT,
