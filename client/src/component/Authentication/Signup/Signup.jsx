@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import pfp from '../../../assets/pfp.png';
 import axios from 'axios';
 import './Signup.css';
@@ -29,10 +31,11 @@ function Signup() {
 		const pics = event.target.files[0];
 		setPicLoading(true);
 		if (pics === undefined) {
-			alert('Please Select an Image!');
+			toast.error('Please select an image', {
+				position: toast.POSITION.TOP_RIGHT,
+			});
 			return;
 		}
-		console.log(pics);
 		if (pics.type === 'image/jpeg' || pics.type === 'image/png') {
 			const data = new FormData();
 			data.append('file', pics);
@@ -46,18 +49,20 @@ function Signup() {
 						body: data,
 					}
 				);
-				console.log(response);
 				const responseData = await response.json();
 				setPic(responseData.url.toString());
-				console.log(responseData.url.toString());
 				setPicLoading(false);
 				handlePfpChange(event);
 			} catch (err) {
-				console.log(err);
+				toast.error('Some error occured', {
+					position: toast.POSITION.TOP_RIGHT,
+				});
 				setPicLoading(false);
 			}
 		} else {
-			alert('Please Select an Image!');
+			toast.error('Please select an image', {
+				position: toast.POSITION.TOP_RIGHT,
+			});
 			setPicLoading(false);
 			return;
 		}
@@ -67,24 +72,20 @@ function Signup() {
 		setPicLoading(true);
 
 		if (!name || !email || !password || !cPassword) {
-			alert('Please fill in all the fields');
-			setPicLoading(false);
-			return;
-		}
-
-		if (password !== cPassword) {
-			alert({
-				title: 'Passwords do not match',
-				status: 'warning',
-				duration: 5000,
-				isClosable: true,
-				position: 'bottom',
+			toast.error('Please fill in all fields!', {
+				position: toast.POSITION.TOP_RIGHT,
 			});
 			setPicLoading(false);
 			return;
 		}
 
-		console.log(name, email, password, pic);
+		if (password !== cPassword) {
+			toast.error('Passwords did not match!', {
+				position: toast.POSITION.TOP_RIGHT,
+			});
+			setPicLoading(false);
+			return;
+		}
 
 		try {
 			const config = {
@@ -104,15 +105,17 @@ function Signup() {
 				config
 			);
 
-			console.log(data);
-
-			alert('Registration Successful');
+			toast.success('Registration Success', {
+				position: toast.POSITION.TOP_RIGHT,
+			});
 
 			localStorage.setItem('userInfo', JSON.stringify(data));
 			setPicLoading(false);
 			history.push('/chats');
 		} catch (error) {
-			alert('Error occurred!');
+			toast.error('Some error occured', {
+				position: toast.POSITION.TOP_RIGHT,
+			});
 			setPicLoading(false);
 		}
 	};
@@ -193,6 +196,7 @@ function Signup() {
 					</button>
 				)}
 			</form>
+			<ToastContainer />
 		</div>
 	);
 }
