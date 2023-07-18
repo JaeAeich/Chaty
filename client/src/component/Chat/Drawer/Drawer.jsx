@@ -7,6 +7,7 @@ import 'react-modern-drawer/dist/index.css';
 import './Drawer.css';
 import { useNavigate } from 'react-router-dom';
 import { ChatState } from '../../../context/chatProvider';
+import Skeleton from '../Skeleton/Skeleton';
 
 function Drawer() {
 	const [search, setSearch] = useState('');
@@ -82,6 +83,9 @@ function Drawer() {
 						<div className='find' onClick={(e) => handleSearch(e)}>
 							Search
 						</div>
+					</div>
+					<div className='search-result'>
+						<Skeleton></Skeleton>
 					</div>
 				</OverlayDrawer>
 				<div className='search-box' onClick={toggleDrawer}>
