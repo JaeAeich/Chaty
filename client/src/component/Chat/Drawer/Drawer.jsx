@@ -8,6 +8,7 @@ import './Drawer.css';
 import { useNavigate } from 'react-router-dom';
 import { ChatState } from '../../../context/chatProvider';
 import Skeleton from '../Skeleton/Skeleton';
+import ChatListItem from '../ChatListItem/ChatListItem';
 
 function Drawer() {
 	const [search, setSearch] = useState('');
@@ -44,7 +45,6 @@ function Drawer() {
 		try {
 			setLoading(true);
 
-			console.log(user);
 			const config = {
 				headers: {
 					Authorization: `Bearer ${user.token}`,
@@ -85,7 +85,13 @@ function Drawer() {
 						</div>
 					</div>
 					<div className='search-result'>
-						{loading ? <Skeleton></Skeleton> : 'result'}
+						{loading ? (
+							<Skeleton />
+						) : (
+							searchResult?.map((user) => (
+								<ChatListItem key={user._id} user={user} />
+							))
+						)}
 					</div>
 				</OverlayDrawer>
 				<div className='search-box' onClick={toggleDrawer}>
