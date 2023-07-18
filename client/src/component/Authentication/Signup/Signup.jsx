@@ -4,6 +4,8 @@ import './Signup.css';
 
 function Signup() {
 	const [pfpPreview, setPfpPreview] = useState(pfp);
+	const [pic, setPic] = useState(null);
+	const [picLoading, setPicLoading] = useState(false);
 	const [name, setName] = useState();
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
@@ -20,6 +22,44 @@ function Signup() {
 		}
 	};
 
+	const postDetails = async (event) => {
+		const pics = event.target.files[0];
+		setPicLoading(true);
+		if (pics === undefined) {
+			alert('Please Select an Image!');
+			return;
+		}
+		console.log(pics);
+		if (pics.type === 'image/jpeg' || pics.type === 'image/png') {
+			const data = new FormData();
+			data.append('file', pics);
+			data.append('upload_preset', 'chaty_preset');
+			data.append('cloud_name', 'ddqklzh3t');
+			try {
+				const response = await fetch(
+					'https://api.cloudinary.com/v1_1/ddqklzh3t/image/upload',
+					{
+						method: 'post',
+						body: data,
+					}
+				);
+				console.log(response);
+				const responseData = await response.json();
+				setPic(responseData.url.toString());
+				console.log(responseData.url.toString());
+				setPicLoading(false);
+				handlePfpChange(event);
+			} catch (err) {
+				console.log(err);
+				setPicLoading(false);
+			}
+		} else {
+			alert('Please Select an Image!');
+			setPicLoading(false);
+			return;
+		}
+	};
+
 	return (
 		<div>
 			<form className='signup-form'>
@@ -30,7 +70,7 @@ function Signup() {
 							id='pfp'
 							name='pfp'
 							accept='image/*'
-							onChange={handlePfpChange}
+							onChange={postDetails}
 						/>
 						<div className='pfp-preview'>
 							{pfpPreview ? (
@@ -79,13 +119,18 @@ function Signup() {
 					<label htmlFor='password'>Confirm password:</label>
 					<input
 						type='password'
-						id='password'
-						name='password'
+						id='Cpassword'
+						name='Cpassword'
 						onChange={(e) => setCPassword(e.target.value)}
 						required
 					/>
 				</div>
-				<button type='submit'>Sign Up</button>
+				{picLoading && (
+					<button type='submit' disabled>
+						Wait Please
+					</button>
+				)}
+				{!picLoading && <button type='submit'>Sign Up</button>}
 			</form>
 		</div>
 	);
