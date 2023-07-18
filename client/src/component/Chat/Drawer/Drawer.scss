@@ -1,0 +1,132 @@
+.drawer-container {
+	padding: 1rem;
+	display: flex;
+	justify-content: space-between;
+	background-color: var(--color-primary);
+	color: var(--color-bg);
+
+	.header {
+		.overlay-drawer {
+			.search-input {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: var(--color-primary);
+
+				input[type='text'] {
+					flex: 1;
+					height: 30px;
+					width: 75%;
+					margin-top: 0.4rem;
+					padding: 0.5rem;
+					border: 1px solid #ccc;
+					border-radius: 4px;
+				}
+
+				.find {
+					padding: 0.3rem;
+					user-select: none;
+					&:hover {
+						color: var(--color-primary);
+						border-radius: 0.6em;
+						background-color: var(--color-accent);
+					}
+
+					&:active {
+						color: var(--color-primary);
+						background-color: var(--color-cta);
+					}
+
+					@media (max-width: 768px) {
+						padding: 0.2rem;
+					}
+				}
+
+				input[type='text']:focus {
+					outline: none;
+					border-color: #555;
+				}
+			}
+		}
+		.search-box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			gap: 0.4rem;
+			padding: 0.5rem;
+			user-select: none;
+			cursor: pointer;
+			&:hover {
+				color: var(--color-primary);
+				border-radius: 0.6em;
+				background-color: var(--color-accent);
+			}
+
+			&:active {
+				color: var(--color-primary);
+				background-color: var(--color-cta);
+			}
+			@media (max-width: 768px) {
+				padding: 0.2rem;
+				.search-text {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.logo {
+		font-weight: 550;
+		font-size: xx-large;
+		@media (max-width: 768px) {
+			.logo {
+				font-size: large;
+			}
+		}
+	}
+	.settings {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1.2rem;
+		.notification {
+			height: 100%;
+			display: flex;
+			align-items: center;
+			padding: 0.5rem;
+			svg {
+				cursor: pointer;
+				width: 1.2rem;
+				height: auto;
+			}
+
+			&:hover {
+				color: var(--color-primary);
+				border-radius: 0.6em;
+				background-color: var(--color-accent);
+			}
+
+			&:active {
+				color: var(--color-primary);
+				background-color: var(--color-cta);
+			}
+			@media (max-width: 768px) {
+				padding: 0.2rem;
+				gap: 0.4rem;
+			}
+		}
+		.logout {
+			user-select: none;
+			cursor: pointer;
+			&:hover {
+				color: rgb(228, 137, 137);
+			}
+
+			&:active {
+				color: rgb(173, 65, 65);
+			}
+		}
+	}
+}

@@ -1,0 +1,129 @@
+.drawer-container {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+.drawer-container .header .overlay-drawer .search-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-primary);
+}
+.drawer-container .header .overlay-drawer .search-input input[type=text] {
+  flex: 1;
+  height: 30px;
+  width: 75%;
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.drawer-container .header .overlay-drawer .search-input .find {
+  padding: 0.3rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.drawer-container .header .overlay-drawer .search-input .find:hover {
+  color: var(--color-primary);
+  border-radius: 0.6em;
+  background-color: var(--color-accent);
+}
+.drawer-container .header .overlay-drawer .search-input .find:active {
+  color: var(--color-primary);
+  background-color: var(--color-cta);
+}
+@media (max-width: 768px) {
+  .drawer-container .header .overlay-drawer .search-input .find {
+    padding: 0.2rem;
+  }
+}
+.drawer-container .header .overlay-drawer .search-input input[type=text]:focus {
+  outline: none;
+  border-color: #555;
+}
+.drawer-container .header .search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 0.4rem;
+  padding: 0.5rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+.drawer-container .header .search-box:hover {
+  color: var(--color-primary);
+  border-radius: 0.6em;
+  background-color: var(--color-accent);
+}
+.drawer-container .header .search-box:active {
+  color: var(--color-primary);
+  background-color: var(--color-cta);
+}
+@media (max-width: 768px) {
+  .drawer-container .header .search-box {
+    padding: 0.2rem;
+  }
+  .drawer-container .header .search-box .search-text {
+    display: none;
+  }
+}
+.drawer-container .logo {
+  font-weight: 550;
+  font-size: xx-large;
+}
+@media (max-width: 768px) {
+  .drawer-container .logo .logo {
+    font-size: large;
+  }
+}
+.drawer-container .settings {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+.drawer-container .settings .notification {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+}
+.drawer-container .settings .notification svg {
+  cursor: pointer;
+  width: 1.2rem;
+  height: auto;
+}
+.drawer-container .settings .notification:hover {
+  color: var(--color-primary);
+  border-radius: 0.6em;
+  background-color: var(--color-accent);
+}
+.drawer-container .settings .notification:active {
+  color: var(--color-primary);
+  background-color: var(--color-cta);
+}
+@media (max-width: 768px) {
+  .drawer-container .settings .notification {
+    padding: 0.2rem;
+    gap: 0.4rem;
+  }
+}
+.drawer-container .settings .logout {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+.drawer-container .settings .logout:hover {
+  color: rgb(228, 137, 137);
+}
+.drawer-container .settings .logout:active {
+  color: rgb(173, 65, 65);
+}/*# sourceMappingURL=Drawer.css.map */
