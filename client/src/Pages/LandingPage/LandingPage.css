@@ -9,6 +9,9 @@
   padding: 1rem;
   text-align: center;
 }
+.container .auth {
+  width: 100%;
+}
 .container .tabs {
   display: flex;
   justify-content: center;
@@ -41,6 +44,7 @@
   flex: 1;
 }
 .container .footer {
+  width: 100%;
   background-color: var(--color-primary);
   color: var(--color-bg);
 }

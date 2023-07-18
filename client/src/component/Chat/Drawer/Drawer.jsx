@@ -85,7 +85,7 @@ function Drawer() {
 						</div>
 					</div>
 					<div className='search-result'>
-						<Skeleton></Skeleton>
+						{loading ? <Skeleton></Skeleton> : 'result'}
 					</div>
 				</OverlayDrawer>
 				<div className='search-box' onClick={toggleDrawer}>
