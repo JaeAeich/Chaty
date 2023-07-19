@@ -36,6 +36,33 @@ function Drawer() {
 		setIsOpen(!isOpen);
 	};
 
+	const accessChat = async (userId) => {
+		try {
+			setLoadingChat(true);
+			const config = {
+				headers: {
+					'Content-type': 'application/json',
+					Authorization: `Bearer ${user.token}`,
+				},
+			};
+			const { data } = await axios.post(
+				`http://localhost:4000/api/chat`,
+				{ userId },
+				config
+			);
+
+			if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
+			setSelectedChat(data);
+			setLoadingChat(false);
+			console.log(chats);
+			toggleDrawer();
+		} catch (error) {
+			toast.error('Some error occured while fetching the chats', {
+				position: toast.POSITION.TOP_RIGHT,
+			});
+		}
+	};
+
 	const handleSearch = async (e) => {
 		if (!search) {
 			toast.error('Please fill int the search paramenter', {
@@ -89,7 +116,11 @@ function Drawer() {
 							<Skeleton />
 						) : (
 							searchResult?.map((user) => (
-								<ChatListItem key={user._id} user={user} />
+								<ChatListItem
+									key={user._id}
+									user={user}
+									handleFunction={accessChat}
+								/>
 							))
 						)}
 					</div>
