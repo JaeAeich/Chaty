@@ -1,24 +1,28 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const chats = require('./data/data'); // Dummy data
+const { connectDB } = require('./config/db');
+const userRotues = require('./routes/userRoutes');
+const { notFound, errorHandler } = require('./middleware/errorMiddleware');
+const cors = require('cors');
 
 const app = express();
 // Configure environment variables
 dotenv.config();
+connectDB();
+app.use(cors());
+
+app.use(express.json());
 
 app.get('/', (req, res) => {
 	res.send('Welcome to chaty API!');
 });
 
-app.get('/api/chat', (req, res) => {
-	console.log(chats);
-	res.send(chats);
-});
+app.use('/api/user', userRotues);
 
-app.get('/api/chat/:id', (req, res) => {
-	let id = req.params['id'];
-	res.send(id);
-});
+// Error Handling middlewares
+app.use(notFound);
+app.use(errorHandler);
 
 const port = process.env.PORT;
 

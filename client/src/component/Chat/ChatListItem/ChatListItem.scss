@@ -1,0 +1,49 @@
+.list-item-container {
+	color: var(--color-primary);
+	cursor: pointer;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.data {
+		width: 90%;
+		padding: 1rem;
+		display: flex;
+		gap: 1rem;
+		.avatar {
+			border-radius: 50%;
+			height: 2rem;
+			width: 2rem;
+			img {
+				height: 2rem;
+				width: 2rem;
+			}
+		}
+		.user-info {
+			.name {
+				font-size: larger;
+			}
+			.email {
+				font-weight: 600;
+				font-size: xx-small;
+			}
+		}
+	}
+	&:not(:last-child) {
+		margin-right: 1em;
+	}
+
+	&.active {
+		color: var(--color-bg);
+		background-color: var(--color-accent);
+	}
+
+	&:hover {
+		border-radius: 0.6em;
+		background-color: var(--color-accent);
+	}
+
+	&:active {
+		background-color: var(--color-cta);
+	}
+}

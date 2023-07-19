@@ -1,0 +1,44 @@
+.list-item-container {
+  color: var(--color-primary);
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.list-item-container .data {
+  width: 90%;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.list-item-container .data .avatar {
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+}
+.list-item-container .data .avatar img {
+  height: 2rem;
+  width: 2rem;
+}
+.list-item-container .data .user-info .name {
+  font-size: larger;
+}
+.list-item-container .data .user-info .email {
+  font-weight: 600;
+  font-size: xx-small;
+}
+.list-item-container:not(:last-child) {
+  margin-right: 1em;
+}
+.list-item-container.active {
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+}
+.list-item-container:hover {
+  border-radius: 0.6em;
+  background-color: var(--color-accent);
+}
+.list-item-container:active {
+  background-color: var(--color-cta);
+}/*# sourceMappingURL=ChatListItem.css.map */
