@@ -10,7 +10,7 @@ const messageModel = mongoose.Schema(
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'User',
 		},
-		content: { type: string, trim: true },
+		content: { type: 'string', trim: true },
 	},
 	{
 		timestamps: true,
