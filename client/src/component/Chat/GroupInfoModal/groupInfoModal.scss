@@ -1,0 +1,38 @@
+.modal {
+	.modal-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		.group-badge {
+			display: flex;
+			gap: 0.5rem;
+			align-self: center;
+			justify-content: center;
+		}
+		.form {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			form {
+				button {
+					display: inline-block;
+					padding: 10px 20px;
+					font-size: 16px;
+					font-weight: bold;
+					text-align: center;
+					border: none;
+					border-radius: 5px;
+					cursor: pointer;
+					transition: background-color 0.3s ease;
+					&:hover {
+						background-color: var(--color-accent);
+					}
+					&:focus {
+						background-color: var(--color-cta);
+					}
+				}
+			}
+		}
+	}
+}

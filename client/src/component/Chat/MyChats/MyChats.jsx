@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ChatState } from '../../../context/chatProvider';
 import { toast } from 'react-toastify';
-import Modal from 'react-modal';
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from 'react-modal';
 import './MyChat.css';
 import { getSender } from '../../../config/chatConfig';
 import GroupModal from '../GroupModal/GroupModal';
@@ -59,7 +59,12 @@ function MyChats({ fetchAgain }) {
 
 	return (
 		<div className='my-chat-container' id='ele'>
-			<Modal isOpen={modal} style={customStyles}>
+			<Modal
+				isOpen={modal}
+				style={customStyles}
+				onRequestClose={handleModal}
+				shouldCloseOnOverlayClick={true}
+			>
 				<GroupModal handleModal={handleModal}></GroupModal>
 			</Modal>
 			<div className='chat-browse-box'>

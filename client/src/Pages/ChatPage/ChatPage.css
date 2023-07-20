@@ -6,4 +6,9 @@
   width: 100vw;
   display: grid;
   grid-template-columns: 1fr 3fr;
+}
+@media screen and (max-width: 768px) {
+  .chat-container .body {
+    grid-template-columns: 2fr 3fr;
+  }
 }/*# sourceMappingURL=ChatPage.css.map */
