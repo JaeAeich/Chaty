@@ -16,6 +16,24 @@
 .my-chat-container .chat-browse-box .title {
   text-align: center;
   font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.my-chat-container .chat-browse-box .title .group-button {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  font-size: small;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+}
+.my-chat-container .chat-browse-box .title .group-button:hover {
+  background-color: var(--color-accent);
+}
+.my-chat-container .chat-browse-box .title .group-button:active {
+  background-color: var(--color-cta);
+  color: var(--color-bg);
 }
 .my-chat-container .chat-browse-box .chats {
   display: flex;

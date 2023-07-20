@@ -1,0 +1,40 @@
+.modal-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--color-primary);
+}
+.modal-content .title {
+  font-size: x-large;
+  text-align: center;
+}
+.modal-content form {
+  /* Reset default styles for the input */
+  /* Styling for when the input is focused */
+  /* Styling for a disabled input */
+}
+.modal-content form input {
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+.modal-content form input:focus {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.modal-content form input:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+.modal-content .modal-user-badge {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}/*# sourceMappingURL=GroupModal.css.map */
