@@ -12,8 +12,8 @@ const Chatpage = () => {
 		<div className='chat-container'>
 			<div className='header'>{<Drawer />}</div>
 			<div className='body'>
-				{<MyChats></MyChats>}
-				{<ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />}
+				{user && <MyChats fetchAgain={fetchAgain} />}
+				{user && <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />}
 			</div>
 		</div>
 	);

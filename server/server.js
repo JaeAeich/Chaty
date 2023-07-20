@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const chats = require('./data/data'); // Dummy data
 const { connectDB } = require('./config/db');
 const userRotues = require('./routes/userRoutes');
+const chatRoutes = require('./routes/chatRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 const cors = require('cors');
 
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/user', userRotues);
+app.use('/api/chat', chatRoutes);
 
 // Error Handling middlewares
 app.use(notFound);

@@ -3,10 +3,12 @@ import React from 'react';
 import './ChatListItem.css';
 
 function ChatListItem(props) {
-	const { user } = props;
-
+	const { user, handleFunction } = props;
 	return (
-		<div className='list-item-container'>
+		<div
+			className='list-item-container'
+			onClick={() => handleFunction(user._id)}
+		>
 			<div className='data'>
 				<div className='avatar'>
 					<img src={user.pfp} alt={user.name} />
