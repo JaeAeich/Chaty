@@ -67,7 +67,7 @@ const GroupModal = ({ handleModal }) => {
 				},
 			};
 			const { data } = await axios.post(
-				`/api/chat/group`,
+				`http://localhost:4000/api/chat/group`,
 				{
 					name: groupChatName,
 					users: JSON.stringify(selectedUsers.map((u) => u._id)),
@@ -78,8 +78,9 @@ const GroupModal = ({ handleModal }) => {
 			handleModal();
 			toast.success('New Group Chat Created');
 		} catch (error) {
+			console.log(error);
 			toast.error('Failed to Create the Chat!');
-		}
+		}	
 	};
 
 	return (

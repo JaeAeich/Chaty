@@ -49,7 +49,7 @@ function MyChats({ fetchAgain }) {
 	return (
 		<div className='my-chat-container' id='ele'>
 			<Modal isOpen={modal} style={{ width: '50vw', height: '50vh' }}>
-				<GroupModal closeFunc={handleModal}></GroupModal>
+				<GroupModal handleModal={handleModal}></GroupModal>
 			</Modal>
 			<div className='chat-browse-box'>
 				<div className='title'>
