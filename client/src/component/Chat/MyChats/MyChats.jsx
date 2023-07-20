@@ -68,9 +68,32 @@ function MyChats({ fetchAgain }) {
 					</div>
 				) : (
 					//   <ChatLoading />
-					<div>loading</div>
+					<div className='chats-loading'>
+						<article>
+							<div className='shimmer'>Loading</div>
+						</article>
+						<article>
+							<div className='shimmer'>Loading</div>
+						</article>
+						<article>
+							<div className='shimmer'>Loading</div>
+						</article>
+						<article>
+							<div className='shimmer'>Loading</div>
+						</article>
+						<article>
+							<div className='shimmer'>Loading</div>
+						</article>
+						<article>
+							<div className='shimmer'>Loading</div>
+						</article>
+						<article>
+							<div className='shimmer'>Loading</div>
+						</article>
+					</div>
 				)}
 			</div>
+			<ToastContainer></ToastContainer>
 		</div>
 	);
 }

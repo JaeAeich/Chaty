@@ -45,4 +45,38 @@
 /* Optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
   background: #ff0000;
+}
+
+.chats-loading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+article {
+  background: #ddd;
+  width: 100%;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80%);
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateX(-200%);
+  }
+  to {
+    transform: translateX(200%);
+  }
 }/*# sourceMappingURL=MyChat.css.map */
