@@ -1,4 +1,6 @@
 .chat-container {
+	display: grid;
+	grid-template-rows: auto 1fr;
 	.body {
 		width: 100vw;
 		display: grid;

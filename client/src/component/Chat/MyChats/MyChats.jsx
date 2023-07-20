@@ -3,6 +3,8 @@ import axios from 'axios';
 import { ChatState } from '../../../context/chatProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './MyChat.css';
+import { getSender } from '../../../config/chatConfig';
 
 function MyChats({ fetchAgain }) {
 	const [loggedUser, setLoggedUser] = useState();
@@ -35,7 +37,42 @@ function MyChats({ fetchAgain }) {
 		fetchChats();
 	}, []);
 
-	return <div></div>;
+	return (
+		<div className='my-chat-container'>
+			<div className='chat-browse-box'>
+				<div className='title'>My Chats</div>
+				{chats ? (
+					<div className='chats'>
+						{chats.map((chat) => (
+							<div
+								className='chat'
+								onClick={() => setSelectedChat(chat)}
+								key={chat._id}
+							>
+								{console.log(chat)}
+								<p className='chat-name'>
+									{!chat.isGroupChat
+										? getSender(loggedUser, chat.users)
+										: chat.chatName}
+								</p>
+								{chat.latestMessage && (
+									<p className='lastMessage' fontSize='xs'>
+										<b>{chat.latestMessage.sender.name} : </b>
+										{chat.latestMessage.content.length > 50
+											? chat.latestMessage.content.substring(0, 51) + '...'
+											: chat.latestMessage.content}
+									</p>
+								)}
+							</div>
+						))}
+					</div>
+				) : (
+					//   <ChatLoading />
+					<div>loading</div>
+				)}
+			</div>
+		</div>
+	);
 }
 
 export default MyChats;

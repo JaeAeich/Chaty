@@ -1,0 +1,47 @@
+.my-chat-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.chat-browse-box {
+		width: 95%;
+		height: 95%;
+		display: grid;
+		grid-template-rows: auto 1fr;
+		gap: 1rem;
+		color: var(--color-primary);
+		.title {
+			text-align: center;
+			font-size: 1.6rem;
+		}
+		.chats {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			overflow-y: scroll;
+			.chat {
+				width: 100%;
+				padding: 1rem;
+				cursor: pointer;
+				border-radius: 1rem;
+				&:hover {
+					background-color: var(--color-secondary);
+				}
+				&:active {
+					color: var(--color-accent);
+					background-color: var(--color-primary);
+				}
+			}
+		}
+	}
+}
+
+::-webkit-scrollbar {
+	width: 0; /* Remove scrollbar space */
+	background: transparent; /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+	background: #ff0000;
+}
