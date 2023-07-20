@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ChatState } from '../../../context/chatProvider';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 import 'react-toastify/dist/ReactToastify.css';
 import './MyChat.css';
@@ -39,6 +39,17 @@ function MyChats({ fetchAgain }) {
 		}
 	};
 
+	const customStyles = {
+		content: {
+			top: '50%',
+			left: '50%',
+			right: 'auto',
+			bottom: 'auto',
+			marginRight: '-50%',
+			transform: 'translate(-50%, -50%)',
+		},
+	};
+
 	useEffect(() => {
 		setLoggedUser(JSON.parse(localStorage.getItem('userInfo')));
 		fetchChats();
@@ -48,7 +59,7 @@ function MyChats({ fetchAgain }) {
 
 	return (
 		<div className='my-chat-container' id='ele'>
-			<Modal isOpen={modal} style={{ width: '50vw', height: '50vh' }}>
+			<Modal isOpen={modal} style={customStyles}>
 				<GroupModal handleModal={handleModal}></GroupModal>
 			</Modal>
 			<div className='chat-browse-box'>
@@ -108,7 +119,6 @@ function MyChats({ fetchAgain }) {
 					</div>
 				)}
 			</div>
-			<ToastContainer></ToastContainer>
 		</div>
 	);
 }

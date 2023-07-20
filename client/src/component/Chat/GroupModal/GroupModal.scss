@@ -37,7 +37,20 @@
 	.modal-user-badge {
 		display: flex;
 		align-items: center;
-        margin-top: 1rem;
+		margin-top: 1rem;
 		// justify-content: center;
+	}
+	.modal-footer {
+		button {
+			display: inline-block;
+			padding: 10px 20px;
+			font-size: 16px;
+			font-weight: bold;
+			text-align: center;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
 	}
 }

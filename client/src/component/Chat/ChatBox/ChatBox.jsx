@@ -1,7 +1,15 @@
-import React from 'react';
+import { ChatState } from '../../../context/chatProvider';
+import CurrentChat from '../CurrentChat/CurrentChat';
+import './Chatbox.css';
 
-function ChatBox() {
-	return <div>ChatBox</div>;
-}
+const Chatbox = ({ fetchAgain, setFetchAgain }) => {
+	const { selectedChat } = ChatState();
 
-export default ChatBox;
+	return (
+		<div className='chat-box'>
+			<CurrentChat fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+		</div>
+	);
+};
+
+export default Chatbox;

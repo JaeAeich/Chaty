@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { ChatState } from '../../../context/chatProvider';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ChatListItem from '../ChatListItem/ChatListItem';
 import ChatBadge from '../ChatBadge/ChatBadge';
@@ -80,12 +80,11 @@ const GroupModal = ({ handleModal }) => {
 		} catch (error) {
 			console.log(error);
 			toast.error('Failed to Create the Chat!');
-		}	
+		}
 	};
 
 	return (
 		<div className='modal-content'>
-			<ToastContainer />
 			<div className='title'>Create Group Chat</div>
 			<div className='modal-body'>
 				<form className='modal-form'>

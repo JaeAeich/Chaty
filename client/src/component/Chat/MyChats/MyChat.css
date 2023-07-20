@@ -19,6 +19,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid var(--color-primary);
 }
 .my-chat-container .chat-browse-box .title .group-button {
   -webkit-user-select: none;

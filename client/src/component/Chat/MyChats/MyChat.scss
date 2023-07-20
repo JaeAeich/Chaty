@@ -17,6 +17,7 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			border-bottom: 1px solid var(--color-primary);
 			.group-button {
 				user-select: none;
 				font-size: small;
@@ -27,7 +28,7 @@
 				}
 				&:active {
 					background-color: var(--color-cta);
-                    color: var(--color-bg);
+					color: var(--color-bg);
 				}
 			}
 		}
