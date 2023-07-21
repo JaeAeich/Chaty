@@ -135,7 +135,7 @@ const CurrentChat = ({ fetchAgain, setFetchAgain }) => {
 			}
 		}, timerLength);
 	};
-	
+
 	const customStyles = {
 		content: {
 			top: '50%',
@@ -235,13 +235,12 @@ const CurrentChat = ({ fetchAgain, setFetchAgain }) => {
 						<form id='first-name'>
 							{istyping ? (
 								<div>
-									<div
-									// options={defaultOptions}
-									// // height={50}
-									// width={70}
-									// style={{ marginBottom: 15, marginLeft: 0 }}
-									>
-										TYPING
+									<div className='chat-bubble'>
+										<div className='typing'>
+											<div className='dot'></div>
+											<div className='dot'></div>
+											<div className='dot'></div>
+										</div>
 									</div>
 								</div>
 							) : (

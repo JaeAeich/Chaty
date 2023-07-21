@@ -30,6 +30,56 @@
   /* Styling for when the input is focused */
   /* Styling for a disabled input */
 }
+.current-chat-container .current-chat .chat-space form .chat-bubble {
+  padding: 16px 28px;
+  -webkit-border-radius: 20px;
+  -webkit-border-bottom-left-radius: 2px;
+  -moz-border-radius: 20px;
+  -moz-border-radius-bottomleft: 2px;
+  border-radius: 20px;
+  border-bottom-left-radius: 2px;
+  display: inline-block;
+}
+.current-chat-container .current-chat .chat-space form .typing {
+  align-items: center;
+  display: flex;
+  height: 17px;
+}
+.current-chat-container .current-chat .chat-space form .typing .dot {
+  animation: mercuryTypingAnimation 1.8s infinite ease-in-out;
+  border-radius: 50%;
+  height: 7px;
+  margin-right: 4px;
+  vertical-align: middle;
+  width: 7px;
+  display: inline-block;
+}
+.current-chat-container .current-chat .chat-space form .typing .dot:nth-child(1) {
+  animation-delay: 200ms;
+}
+.current-chat-container .current-chat .chat-space form .typing .dot:nth-child(2) {
+  animation-delay: 300ms;
+}
+.current-chat-container .current-chat .chat-space form .typing .dot:nth-child(3) {
+  animation-delay: 400ms;
+}
+.current-chat-container .current-chat .chat-space form .typing .dot:last-child {
+  margin-right: 0;
+}
+@keyframes mercuryTypingAnimation {
+  0% {
+    transform: translateY(0px);
+    background-color: var(--color-cta);
+  }
+  28% {
+    transform: translateY(-7px);
+    background-color: var(--color-accent);
+  }
+  44% {
+    transform: translateY(0px);
+    background-color: #b5d9cb;
+  }
+}
 .current-chat-container .current-chat .chat-space form input {
   border: none;
   outline: none;
