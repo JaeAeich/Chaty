@@ -28,7 +28,6 @@ function CurrentScrollableChat({ messages }) {
 									style={{ display: 'flex', alignContent: 'end' }}
 									label={m.sender.name}
 								>
-									{console.log(m.sender)}
 									<img
 										style={{ width: '2rem', alignSelf: 'end' }}
 										name={m.sender.name}

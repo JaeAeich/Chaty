@@ -14,6 +14,7 @@ message. */
 //@access          Protected
 const allMessages = asyncHandler(async (req, res) => {
 	try {
+		console.log(req);
 		const messages = await Message.find({ chat: req.params.chatId })
 			.populate('sender', 'name pfp email')
 			.populate('chat');
@@ -42,6 +43,8 @@ const sendMessage = asyncHandler(async (req, res) => {
 		content: content,
 		chat: chatId,
 	};
+
+	console.log('sender: ', req.user.name);
 
 	try {
 		var message = await Message.create(newMessage);

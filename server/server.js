@@ -67,6 +67,7 @@ io.on('connection', (socket) => {
 	executes the code inside the callback function. */
 	socket.on('new message', (newMessageRecieved) => {
 		var chat = newMessageRecieved.chat;
+		console.log(chat);
 
 		if (!chat.users) return console.log('chat.users not defined');
 
