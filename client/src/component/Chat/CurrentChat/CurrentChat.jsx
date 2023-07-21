@@ -7,7 +7,10 @@ import './CurrentChat.css';
 import GroupInfoModal from '../GroupInfoModal/GroupInfoModal';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import io from 'socket.io-client';
 import CurrentScrollableChat from '../CurrentScrollableChat/CurrentScrollableChat';
+
+var socket, selectedChatCompare;
 
 const CurrentChat = ({ fetchAgain, setFetchAgain }) => {
 	const [messages, setMessages] = useState([]);
@@ -45,7 +48,7 @@ const CurrentChat = ({ fetchAgain, setFetchAgain }) => {
 			setMessages(data);
 			setLoading(false);
 
-			// socket.emit('join chat', selectedChat._id);
+			socket.emit('join chat', selectedChat._id);
 		} catch (error) {
 			toast.error('Error Occured!');
 		}
@@ -54,7 +57,7 @@ const CurrentChat = ({ fetchAgain, setFetchAgain }) => {
 	const sendMessage = async (event) => {
 		if (event.key === 'Enter' && newMessage) {
 			event.preventDefault();
-			// socket.emit('stop typing', selectedChat._id);
+			socket.emit('stop typing', selectedChat._id);
 			try {
 				const config = {
 					headers: {
@@ -71,7 +74,7 @@ const CurrentChat = ({ fetchAgain, setFetchAgain }) => {
 					},
 					config
 				);
-				// socket.emit('new message', data);
+				socket.emit('new message', data);
 				setMessages([...messages, data]);
 			} catch (error) {
 				toast.error('Error Occured!');
@@ -79,56 +82,56 @@ const CurrentChat = ({ fetchAgain, setFetchAgain }) => {
 		}
 	};
 
-	// useEffect(() => {
-	// 	socket = io(ENDPOINT);
-	// 	socket.emit('setup', user);
-	// 	socket.on('connected', () => setSocketConnected(true));
-	// 	socket.on('typing', () => setIsTyping(true));
-	// 	socket.on('stop typing', () => setIsTyping(false));
+	useEffect(() => {
+		socket = io(import.meta.env.VITE_BACKEND_BASE_URL);
+		socket.emit('setup', user);
+		socket.on('connected', () => setSocketConnected(true));
+		socket.on('typing', () => setIsTyping(true));
+		socket.on('stop typing', () => setIsTyping(false));
 
-	// 	// eslint-disable-next-line
-	// }, []);
+		// eslint-disable-next-line
+	}, []);
 
 	useEffect(() => {
 		fetchMessages();
 
-		// selectedChatCompare = selectedChat;
+		selectedChatCompare = selectedChat;
 	}, [selectedChat]);
 
-	// useEffect(() => {
-	// 	socket.on('message recieved', (newMessageRecieved) => {
-	// 		if (
-	// 			!selectedChatCompare || // if chat is not selected or doesn't match current chat
-	// 			selectedChatCompare._id !== newMessageRecieved.chat._id
-	// 		) {
-	// 			if (!notification.includes(newMessageRecieved)) {
-	// 				setNotification([newMessageRecieved, ...notification]);
-	// 				setFetchAgain(!fetchAgain);
-	// 			}
-	// 		} else {
-	// 			setMessages([...messages, newMessageRecieved]);
-	// 		}
-	// 	});
-	// });
+	useEffect(() => {
+		socket.on('message recieved', (newMessageRecieved) => {
+			if (
+				!selectedChatCompare || // if chat is not selected or doesn't match current chat
+				selectedChatCompare._id !== newMessageRecieved.chat._id
+			) {
+				if (!notification.includes(newMessageRecieved)) {
+					setNotification([newMessageRecieved, ...notification]);
+					setFetchAgain(!fetchAgain);
+				}
+			} else {
+				setMessages([...messages, newMessageRecieved]);
+			}
+		});
+	});
 
 	const typingHandler = (e) => {
 		setNewMessage(e.target.value);
 
-		// if (!socketConnected) return;
+		if (!socketConnected) return;
 
 		if (!typing) {
 			setTyping(true);
-			// socket.emit('typing', selectedChat._id);
+			socket.emit('typing', selectedChat._id);
 		}
 		let lastTypingTime = new Date().getTime();
 		var timerLength = 3000;
 		setTimeout(() => {
 			var timeNow = new Date().getTime();
 			var timeDiff = timeNow - lastTypingTime;
-			// if (timeDiff >= timerLength && typing) {
-			// 	socket.emit('stop typing', selectedChat._id);
-			// 	setTyping(false);
-			// }
+			if (timeDiff >= timerLength && typing) {
+				socket.emit('stop typing', selectedChat._id);
+				setTyping(false);
+			}
 		}, timerLength);
 	};
 
@@ -224,7 +227,6 @@ const CurrentChat = ({ fetchAgain, setFetchAgain }) => {
 							<div className='loading'>Loading</div>
 						) : (
 							<div className='messages'>
-								console.log(messages)
 								<CurrentScrollableChat messages={messages} />
 							</div>
 						)}
@@ -232,12 +234,14 @@ const CurrentChat = ({ fetchAgain, setFetchAgain }) => {
 						<form id='first-name'>
 							{istyping ? (
 								<div>
-									{/* <Lottie
-										options={defaultOptions}
-										// height={50}
-										width={70}
-										style={{ marginBottom: 15, marginLeft: 0 }}
-									/> */}
+									<div
+									// options={defaultOptions}
+									// // height={50}
+									// width={70}
+									// style={{ marginBottom: 15, marginLeft: 0 }}
+									>
+										TYPING
+									</div>
 								</div>
 							) : (
 								<></>
