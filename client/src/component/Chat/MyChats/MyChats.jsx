@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import './MyChat.css';
 import { getSender } from '../../../config/chatConfig';
 import GroupModal from '../GroupModal/GroupModal';
+import ScrollableFeed from 'react-scrollable-feed';
 
 function MyChats({ fetchAgain }) {
 	const [loggedUser, setLoggedUser] = useState();
@@ -73,60 +74,61 @@ function MyChats({ fetchAgain }) {
 						Create group
 					</div>
 				</div>
-				{chats ? (
-					<div className='chats'>
-						{chats.map((chat) => (
-							<div
-								className='chat'
-								onClick={() => setSelectedChat(chat)}
-								key={chat._id}
-							>
-								<p className='chatee-name'>
-									{!chat.isGroupChat
-										? getSender(loggedUser, chat.users)
-										: chat.chatName}
-								</p>
-								{chat.lastMessage && (
-									<p className='chat-name-container' fontSize='xs'>
-										{console.log(chat)}
-										<div className='chat-name'>
-											{chat.lastMessage.sender.name} :
+				<ScrollableFeed>
+					{chats ? (
+						<div className='chats'>
+							{chats.map((chat) => (
+								<div
+									className='chat'
+									onClick={() => setSelectedChat(chat)}
+									key={chat._id}
+								>
+									<div className='chatee-name'>
+										{!chat.isGroupChat
+											? getSender(loggedUser, chat.users)
+											: chat.chatName}
+									</div>
+									{chat.lastMessage && (
+										<div className='chat-name-container' fontSize='xs'>
+											<div className='chat-name'>
+												{chat.lastMessage.sender.name}:
+											</div>
+											<div className='last-message'>
+												{chat.lastMessage.content.length > 50
+													? chat.lastMessage.content.substring(0, 51) + '...'
+													: chat.lastMessage.content}
+											</div>
 										</div>
-										<div className='last-message'>
-											{chat.lastMessage.content.length > 50
-												? chat.lastMessage.content.substring(0, 51) + '...'
-												: chat.lastMessage.content}
-										</div>
-									</p>
-								)}
-							</div>
-						))}
-					</div>
-				) : (
-					<div className='chats-loading'>
-						<article>
-							<div className='shimmer'>Loading</div>
-						</article>
-						<article>
-							<div className='shimmer'>Loading</div>
-						</article>
-						<article>
-							<div className='shimmer'>Loading</div>
-						</article>
-						<article>
-							<div className='shimmer'>Loading</div>
-						</article>
-						<article>
-							<div className='shimmer'>Loading</div>
-						</article>
-						<article>
-							<div className='shimmer'>Loading</div>
-						</article>
-						<article>
-							<div className='shimmer'>Loading</div>
-						</article>
-					</div>
-				)}
+									)}
+								</div>
+							))}
+						</div>
+					) : (
+						<div className='chats-loading'>
+							<article>
+								<div className='shimmer'>Loading</div>
+							</article>
+							<article>
+								<div className='shimmer'>Loading</div>
+							</article>
+							<article>
+								<div className='shimmer'>Loading</div>
+							</article>
+							<article>
+								<div className='shimmer'>Loading</div>
+							</article>
+							<article>
+								<div className='shimmer'>Loading</div>
+							</article>
+							<article>
+								<div className='shimmer'>Loading</div>
+							</article>
+							<article>
+								<div className='shimmer'>Loading</div>
+							</article>
+						</div>
+					)}
+				</ScrollableFeed>
 			</div>
 		</div>
 	);

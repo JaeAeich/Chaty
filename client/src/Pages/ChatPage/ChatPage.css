@@ -1,14 +1,32 @@
 .chat-container {
+  width: 100vw;
   display: grid;
   grid-template-rows: auto 1fr;
 }
 .chat-container .body {
+  display: none;
   width: 100vw;
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
+.chat-container .body .my-chats-box {
+  background-color: var(--color-primary);
+  width: 100%;
+  height: 100%;
+}
 @media screen and (max-width: 768px) {
   .chat-container .body {
     grid-template-columns: 2fr 3fr;
+  }
+}
+@media screen and (max-width: 768px) {
+  .chat-container .body {
+    grid-template-columns: 1fr;
+  }
+  .chat-container .body .my-small-chats-box {
+    display: none;
+  }
+  .chat-container .body .my-small-chats-body {
+    display: none;
   }
 }/*# sourceMappingURL=ChatPage.css.map */
