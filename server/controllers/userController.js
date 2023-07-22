@@ -21,7 +21,7 @@ const allUsers = asyncHandler(async (req, res) => {
 /* The `registerUser` function is an asynchronous handler that is responsible for registering a new
 user in the database. */
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, pic } = req.body;
+  const { name, email, password, pfp } = req.body;
 
   if (!name || !email || !password) {
     res.status(400);
@@ -39,7 +39,7 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password,
-    pic,
+    pfp,
   });
 
   if (user) {
@@ -48,7 +48,7 @@ const registerUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
-      pic: user.pic,
+      pfp: user.pfp,
       token: generateToken(user._id),
     });
   } else {
@@ -70,7 +70,7 @@ const authUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
-      pic: user.pic,
+      pfp: user.pfp,
       token: generateToken(user._id),
     });
   } else {
