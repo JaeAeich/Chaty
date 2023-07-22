@@ -95,12 +95,12 @@ function Signup() {
 			};
 
 			const { data } = await axios.post(
-				'http://localhost:4000/api/user',
+				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/user`,
 				{
 					name,
 					email,
 					password,
-					pic,
+					pfp: pic,
 				},
 				config
 			);
@@ -111,7 +111,7 @@ function Signup() {
 
 			localStorage.setItem('userInfo', JSON.stringify(data));
 			setPicLoading(false);
-			history.push('/');
+			navigate('/chat');
 		} catch (error) {
 			toast.error('Some error occured', {
 				position: toast.POSITION.TOP_RIGHT,
