@@ -4,6 +4,7 @@ import './ChatListItem.css';
 
 function ChatListItem(props) {
 	const { user, handleFunction } = props;
+	console.log(user);
 	return (
 		<div
 			className='list-item-container'

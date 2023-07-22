@@ -8,12 +8,17 @@ const Chatpage = () => {
 	const [fetchAgain, setFetchAgain] = useState(false);
 	const { user } = ChatState();
 
+	const d = { ...localStorage };
+	console.log(d);
+
 	return (
 		<div className='chat-container'>
 			<div className='header'>{<Drawer />}</div>
 			<div className='body'>
 				{user && <MyChats fetchAgain={fetchAgain} />}
-				{user && <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />}
+				{user && (
+					<ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+				)}
 			</div>
 		</div>
 	);

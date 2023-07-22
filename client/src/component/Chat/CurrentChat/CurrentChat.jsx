@@ -258,15 +258,8 @@ const CurrentChat = ({ fetchAgain, setFetchAgain }) => {
 					</div>
 				</div>
 			) : (
-				// to get socket.io on same page
-				<div
-				//  d='flex' alignItems='center' justifyContent='center' h='100%'
-				>
-					<div
-					//  fontSize='3xl' pb={3} fontFamily='Work sans'
-					>
-						Click on a user to start chatting
-					</div>
+				<div className='no-chat'>
+					<div className='shimmer'>Click on a user to start chatting</div>
 				</div>
 			)}
 		</div>

@@ -14,7 +14,7 @@ function Login() {
 	const submitHandler = async () => {
 		setLoading(true);
 		if (!email || !password) {
-			toast.error('Please fill all fields', {	
+			toast.error('Please fill all fields', {
 				position: toast.POSITION.TOP_RIGHT,
 			});
 			setLoading(false);
@@ -29,19 +29,23 @@ function Login() {
 			};
 
 			const { data } = await axios.post(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/user/login`,
+				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/user/login`,
 				{ email, password },
 				config
 			);
-			
+
 			toast.success('Login successful', {
 				position: toast.POSITION.TOP_RIGHT,
 			});
+			// localStorage.clear()
 			localStorage.setItem('userInfo', JSON.stringify(data));
+			const d = { ...localStorage };
+			console.log(d);
 			console.log(data);
 			setLoading(false);
 			navigate('/chat');
 		} catch (error) {
+			console.log(error);
 			toast.error('Some error occured!', {
 				position: toast.POSITION.TOP_RIGHT,
 			});

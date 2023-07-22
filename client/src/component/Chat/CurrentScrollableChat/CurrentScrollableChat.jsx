@@ -12,7 +12,7 @@ function CurrentScrollableChat({ messages }) {
 	const { user } = ChatState();
 
 	return (
-		<div>
+		<div style={{ height: 'calc(100vh - 13.5rem)' }}>
 			<ScrollableFeed>
 				{messages &&
 					messages.map((m, i) => (
