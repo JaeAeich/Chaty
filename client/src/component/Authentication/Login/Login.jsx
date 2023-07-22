@@ -40,12 +40,9 @@ function Login() {
 			// localStorage.clear()
 			localStorage.setItem('userInfo', JSON.stringify(data));
 			const d = { ...localStorage };
-			console.log(d);
-			console.log(data);
 			setLoading(false);
 			navigate('/chat');
 		} catch (error) {
-			console.log(error);
 			toast.error('Some error occured!', {
 				position: toast.POSITION.TOP_RIGHT,
 			});

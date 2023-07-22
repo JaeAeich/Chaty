@@ -54,7 +54,6 @@ function Drawer() {
 			if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
 			setSelectedChat(data);
 			setLoadingChat(false);
-			console.log(chats);
 			toggleDrawer();
 		} catch (error) {
 			toast.error('Some error occured while fetching the chats', {

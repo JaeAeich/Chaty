@@ -42,7 +42,6 @@ const GroupModal = ({ handleModal }) => {
 				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/user?search=${search}`,
 				config
 			);
-			console.log(data);
 			setLoading(false);
 			setSearchResult(data);
 		} catch (error) {
@@ -78,7 +77,6 @@ const GroupModal = ({ handleModal }) => {
 			handleModal();
 			toast.success('New Group Chat Created');
 		} catch (error) {
-			console.log(error);
 			toast.error('Failed to Create the Chat!');
 		}
 	};

@@ -39,7 +39,6 @@ const GroupInfoModal = ({
 				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/user?search=${search}`,
 				config
 			);
-			console.log(data);
 			setLoading(false);
 			setSearchResult(data);
 		} catch (error) {

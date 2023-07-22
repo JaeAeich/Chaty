@@ -11,6 +11,7 @@ const messageModel = mongoose.Schema(
 			ref: 'Chat',
 		},
 		content: { type: 'string', trim: true },
+		readBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 	},
 	{
 		timestamps: true,

@@ -8,9 +8,6 @@ const Chatpage = () => {
 	const [fetchAgain, setFetchAgain] = useState(false);
 	const { user } = ChatState();
 
-	const d = { ...localStorage };
-	console.log(d);
-
 	return (
 		<div className='chat-container'>
 			<div className='header'>{<Drawer />}</div>

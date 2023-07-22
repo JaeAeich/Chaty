@@ -14,7 +14,6 @@ message. */
 //@access          Protected
 const allMessages = asyncHandler(async (req, res) => {
 	try {
-		console.log(req);
 		const messages = await Message.find({ chat: req.params.chatId })
 			.populate('sender', 'name pfp email')
 			.populate('chat');
@@ -56,7 +55,7 @@ const sendMessage = asyncHandler(async (req, res) => {
 			select: 'name pfp email',
 		});
 
-		await Chat.findByIdAndUpdate(req.body.chatId, { latestMessage: message });
+		await Chat.findByIdAndUpdate(req.body.chatId, { lastMessage: message });
 
 		res.json(message);
 	} catch (error) {

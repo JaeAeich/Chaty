@@ -1,6 +1,5 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const chats = require('./data/data'); // Dummy data
 const { connectDB } = require('./config/db');
 const userRotues = require('./routes/userRoutes');
 const chatRoutes = require('./routes/chatRoutes');
@@ -67,7 +66,6 @@ io.on('connection', (socket) => {
 	executes the code inside the callback function. */
 	socket.on('new message', (newMessageRecieved) => {
 		var chat = newMessageRecieved.chat;
-		console.log(chat);
 
 		if (!chat.users) return console.log('chat.users not defined');
 

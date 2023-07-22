@@ -32,7 +32,6 @@ function MyChats({ fetchAgain }) {
 			);
 			setChats(data);
 		} catch (error) {
-			console.log(error);
 			toast.error('Some error occured while fetching the chats', {
 				position: toast.POSITION.TOP_RIGHT,
 			});
@@ -78,21 +77,21 @@ function MyChats({ fetchAgain }) {
 					<div className='chats'>
 						{chats.map((chat) => (
 							<div
-								className='chat'
-								onClick={() => setSelectedChat(chat)}
-								key={chat._id}
+							className='chat'
+							onClick={() => setSelectedChat(chat)}
+							key={chat._id}
 							>
 								<p className='chat-name'>
 									{!chat.isGroupChat
 										? getSender(loggedUser, chat.users)
 										: chat.chatName}
 								</p>
-								{chat.latestMessage && (
+								{chat.lastMessage && (
 									<p className='lastMessage' fontSize='xs'>
-										<b>{chat.latestMessage.sender.name} : </b>
-										{chat.latestMessage.content.length > 50
-											? chat.latestMessage.content.substring(0, 51) + '...'
-											: chat.latestMessage.content}
+										<b>{chat.lastMessage.sender.name} : </b>
+										{chat.lastMessage.content.length > 50
+											? chat.lastMessage.content.substring(0, 51) + '...'
+											: chat.lastMessage.content}
 									</p>
 								)}
 							</div>
