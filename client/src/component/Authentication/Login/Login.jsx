@@ -14,7 +14,7 @@ function Login() {
 	const submitHandler = async () => {
 		setLoading(true);
 		if (!email || !password) {
-			toast.error('Please fill all fields', {
+			toast.error('Please fill all fields', {	
 				position: toast.POSITION.TOP_RIGHT,
 			});
 			setLoading(false);
@@ -29,7 +29,7 @@ function Login() {
 			};
 
 			const { data } = await axios.post(
-				'http://localhost:4000/api/user/login',
+				`${import.meta.env.VITE_BACKEND_BASE_URL}/user/login`,
 				{ email, password },
 				config
 			);

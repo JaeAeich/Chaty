@@ -46,7 +46,7 @@ function Drawer() {
 				},
 			};
 			const { data } = await axios.post(
-				`http://localhost:4000/api/chat`,
+				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/chat`,
 				{ userId },
 				config
 			);
@@ -79,7 +79,7 @@ function Drawer() {
 			};
 
 			const { data } = await axios.get(
-				`http://localhost:4000/api/user?search=${search}`,
+				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/user?search=${search}`,
 				config
 			);
 
