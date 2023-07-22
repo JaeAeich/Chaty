@@ -77,21 +77,26 @@ function MyChats({ fetchAgain }) {
 					<div className='chats'>
 						{chats.map((chat) => (
 							<div
-							className='chat'
-							onClick={() => setSelectedChat(chat)}
-							key={chat._id}
+								className='chat'
+								onClick={() => setSelectedChat(chat)}
+								key={chat._id}
 							>
-								<p className='chat-name'>
+								<p className='chatee-name'>
 									{!chat.isGroupChat
 										? getSender(loggedUser, chat.users)
 										: chat.chatName}
 								</p>
 								{chat.lastMessage && (
-									<p className='lastMessage' fontSize='xs'>
-										<b>{chat.lastMessage.sender.name} : </b>
-										{chat.lastMessage.content.length > 50
-											? chat.lastMessage.content.substring(0, 51) + '...'
-											: chat.lastMessage.content}
+									<p className='chat-name-container' fontSize='xs'>
+										{console.log(chat)}
+										<div className='chat-name'>
+											{chat.lastMessage.sender.name} :
+										</div>
+										<div className='last-message'>
+											{chat.lastMessage.content.length > 50
+												? chat.lastMessage.content.substring(0, 51) + '...'
+												: chat.lastMessage.content}
+										</div>
 									</p>
 								)}
 							</div>
