@@ -165,10 +165,6 @@ These API endpoints enable various functionalities in the Chaty social media app
 
 - [@JaeAeich](https://github.com/JaeAeich)
 
-## Demo
-
-Insert gif or link to demo
-
 ## Features
 
 - User Registration and Authentication:
