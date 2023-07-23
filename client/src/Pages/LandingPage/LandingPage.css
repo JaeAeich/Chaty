@@ -55,30 +55,86 @@
   align-items: center;
   padding: 2rem;
   margin: auto;
+  gap: 4rem;
 }
 .container .footer .footer-container .left,
 .container .footer .footer-container .center,
 .container .footer .footer-container .right {
-  flex: 1;
+  font-size: small;
 }
-.container .footer .footer-container ul {
+.container .footer .footer-container .center {
+  width: 50%;
+}
+@media (max-width: 525px) {
+  .container .footer .footer-container .center {
+    font-size: xx-small;
+  }
+}
+.container .footer .footer-container .right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   list-style: none;
   padding: 0;
   margin: 0;
+  gap: 1rem;
   font-size: 0.8rem;
 }
-.container .footer .footer-container ul li {
+@media (max-width: 525px) {
+  .container .footer .footer-container .right {
+    font-size: xx-small;
+  }
+}
+.container .footer .footer-container .right .social {
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 0.4rem;
 }
-.container .footer .footer-container ul li svg {
-  width: 4rem;
+.container .footer .footer-container .right .social li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 5rem;
 }
-.container .footer .footer-container ul li a {
+.container .footer .footer-container .right .social li svg {
+  display: flex;
+  justify-content: start;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.container .footer .footer-container .right .social li a {
+  width: 3rem;
   color: var(--color-bg);
   text-decoration: none;
 }
-.container .footer .footer-container ul li a:hover {
+.container .footer .footer-container .right .social li a:hover {
   text-decoration: underline;
+}
+@media (max-width: 525px) {
+  .container .footer .footer-container .right .social {
+    flex-direction: column;
+  }
+  .container .footer .footer-container .right .social li {
+    margin-bottom: 0.4rem;
+  }
+}
+.container .footer .footer-container .right .made {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 0.6rem;
+}
+.container .footer .footer-container .right .made svg {
+  color: rgb(206, 51, 51);
+}
+@media (max-width: 525px) {
+  .container .footer .footer-container .right .made {
+    flex-direction: column;
+  }
+}
+@media (max-width: 525px) {
+  .container .footer .footer-container .right {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
 }/*# sourceMappingURL=LandingPage.css.map */

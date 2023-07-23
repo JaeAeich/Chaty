@@ -55,26 +55,33 @@ function LandingPage() {
 			</div>
 			<div className='footer'>
 				<div className='footer-container'>
-					<div className='left'>
-						<ul>
-							<li>Chaty is a powerful and user-friendly chat application.</li>
-							<li>
-								Chaty provides real-time messaging and seamless communication.
-							</li>
-							<li>Chaty offers a sleek and intuitive user interface.</li>
-							<li>Chaty ensures secure and private conversations.</li>
-						</ul>
-					</div>
 					<div className='center'>
 						<p>
-							This is a preview version of the Chaty app. It is not intended for
-							production use. If the App appearce to be nonfunctional that
-							because its backend is on a free tier service, ie service quota
-							has expired.
+							This is a preview version of the Chaty app, specifically designed
+							for testing purposes and not intended for production use. If the
+							app appears nonfunctional, it is because its backend is hosted on
+							a free tier service, and the service quota may have expired.
 						</p>
 					</div>
 					<div className='right'>
-						<ul>
+						<div className='made'>
+							<div>Made with</div>
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								width='16'
+								height='16'
+								fill='currentColor'
+								className='bi bi-heart-fill'
+								viewBox='0 0 16 16'
+							>
+								<path
+									fillRule='evenodd'
+									d='M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z'
+								/>
+							</svg>
+							<div>by Jae Aeich</div>
+						</div>
+						<div className='social'>
 							<li>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
@@ -101,7 +108,7 @@ function LandingPage() {
 								</svg>
 								<a href='https://www.linkedin.com/in/javed-habib/'>LinkedIn</a>
 							</li>
-						</ul>
+						</div>
 					</div>
 				</div>
 			</div>
