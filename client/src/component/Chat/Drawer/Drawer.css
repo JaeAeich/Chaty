@@ -101,6 +101,15 @@
   display: flex;
   align-items: center;
   padding: 0.5rem;
+  position: relative;
+}
+.drawer-container .settings .notification .badge {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-size: x-small;
+  border-radius: 50%;
+  padding: 0.2rem;
 }
 .drawer-container .settings .notification svg {
   cursor: pointer;
@@ -133,4 +142,21 @@
 }
 .drawer-container .settings .logout:active {
   color: rgb(173, 65, 65);
+}
+
+.notif {
+  padding: 0.5rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+.notif:hover {
+  color: var(--color-primary);
+  border-radius: 0.6em;
+  background-color: var(--color-accent);
+}
+.notif:active {
+  color: var(--color-primary);
+  background-color: var(--color-cta);
 }/*# sourceMappingURL=Drawer.css.map */

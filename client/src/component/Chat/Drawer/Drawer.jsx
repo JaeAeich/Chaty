@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import { ChatState } from '../../../context/chatProvider';
 import Skeleton from '../Skeleton/Skeleton';
 import ChatListItem from '../ChatListItem/ChatListItem';
+import Modal from 'react-modal';
+import { getSender } from '../../../config/chatConfig';
 
 function Drawer() {
 	const [search, setSearch] = useState('');
@@ -17,6 +19,7 @@ function Drawer() {
 	const [loadingChat, setLoadingChat] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const navigate = useNavigate();
+	const [modal, setModal] = useState(false);
 
 	const {
 		setSelectedChat,
@@ -91,6 +94,17 @@ function Drawer() {
 		}
 	};
 
+	const customStyles = {
+		content: {
+			top: '50%',
+			left: '50%',
+			right: 'auto',
+			bottom: 'auto',
+			marginRight: '-50%',
+			transform: 'translate(-50%, -50%)',
+		},
+	};
+
 	return (
 		<div className='drawer-container'>
 			<div className='header'>
@@ -144,7 +158,10 @@ function Drawer() {
 				<ToastContainer />
 			</div>
 			<div className='settings'>
-				<div className='notification'>
+				<div className='notification' onClick={() => setModal(!modal)}>
+					{notification.length > 0 && (
+						<span className='badge'>{notification.length}</span>
+					)}
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						width='16'
@@ -155,6 +172,30 @@ function Drawer() {
 					>
 						<path d='M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z' />
 					</svg>
+					<Modal
+						isOpen={modal}
+						style={customStyles}
+						onRequestClose={() => setModal(!modal)}
+						shouldCloseOnOverlayClick={true}
+					>
+						<div className='no-notif'>
+							{!notification.length && 'No New Messages'}
+						</div>
+						{notification.map((notif) => (
+							<div
+								className='notif'
+								key={notif._id}
+								onClick={() => {
+									setSelectedChat(notif.chat);
+									setNotification(notification.filter((n) => n !== notif));
+								}}
+							>
+								{notif.chat.isGroupChat
+									? `New Message in ${notif.chat.chatName}`
+									: `New Message from ${getSender(user, notif.chat.users)}`}
+							</div>
+						))}
+					</Modal>
 				</div>
 				<div className='logout' onClick={handleLogout}>
 					Logout
