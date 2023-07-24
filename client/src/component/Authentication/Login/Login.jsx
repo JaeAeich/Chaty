@@ -37,9 +37,42 @@ function Login() {
 			toast.success('Login successful', {
 				position: toast.POSITION.TOP_RIGHT,
 			});
-			// localStorage.clear()
+
 			localStorage.setItem('userInfo', JSON.stringify(data));
-			const d = { ...localStorage };
+
+			setLoading(false);
+			navigate('/chat');
+		} catch (error) {
+			toast.error('Some error occured!', {
+				position: toast.POSITION.TOP_RIGHT,
+			});
+			setLoading(false);
+		}
+	};
+
+	const submitGuest = async () => {
+		setLoading(true);
+		try {
+			const email = import.meta.env.VITE_GUEST_EMAIL;
+			const password = import.meta.env.VITE_GUEST_PASSWORD;
+			const config = {
+				headers: {
+					'Content-type': 'application/json',
+				},
+			};
+
+			const { data } = await axios.post(
+				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/user/login`,
+				{ email, password },
+				config
+			);
+
+			toast.success('Login successful', {
+				position: toast.POSITION.TOP_RIGHT,
+			});
+
+			localStorage.setItem('userInfo', JSON.stringify(data));
+
 			setLoading(false);
 			navigate('/chat');
 		} catch (error) {
@@ -73,16 +106,23 @@ function Login() {
 						required
 					/>
 				</div>
-				{!loading && (
-					<button type='submit' onClick={submitHandler}>
-						Login
-					</button>
-				)}
-				{loading && (
-					<button type='submit' onClick={submitHandler}>
-						Please Wait
-					</button>
-				)}
+				<div className='login-button'>
+					{!loading && (
+						<button type='submit' onClick={submitHandler}>
+							Login
+						</button>
+					)}
+					{loading && (
+						<button type='submit' onClick={submitHandler}>
+							Please Wait
+						</button>
+					)}
+					{!loading && (
+						<button type='submit' onClick={submitGuest}>
+							Guest User
+						</button>
+					)}
+				</div>
 			</form>
 			<ToastContainer></ToastContainer>
 		</div>

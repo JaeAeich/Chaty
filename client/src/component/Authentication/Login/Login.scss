@@ -1,4 +1,4 @@
-.login-form{
+.login-form {
 	max-width: 400px;
 	margin: 0 auto;
 	padding: 20px;
@@ -23,6 +23,14 @@
 		}
 	}
 
+	.login-button {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+	}
+
 	button[type='submit'] {
 		display: block;
 		width: 100%;
@@ -32,11 +40,7 @@
 		border: none;
 		cursor: pointer;
 		transition: background-color 0.5s, color 0.5s;
-
-		&:not(:last-child) {
-			margin-right: 1em;
-		}
-
+		
 		&.active {
 			color: var(--color-bg);
 			background-color: var(--color-accent);
