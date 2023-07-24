@@ -29,7 +29,7 @@ function Login() {
 			};
 
 			const { data } = await axios.post(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/user/login`,
+				`${process.env.VITE_BACKEND_BASE_URL}/api/user/login`,
 				{ email, password },
 				config
 			);
@@ -53,8 +53,8 @@ function Login() {
 	const submitGuest = async () => {
 		setLoading(true);
 		try {
-			const email = import.meta.env.VITE_GUEST_EMAIL;
-			const password = import.meta.env.VITE_GUEST_PASSWORD;
+			const email = process.env.VITE_GUEST_EMAIL;
+			const password = process.env.VITE_GUEST_PASSWORD;
 			const config = {
 				headers: {
 					'Content-type': 'application/json',
@@ -62,7 +62,7 @@ function Login() {
 			};
 
 			const { data } = await axios.post(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/user/login`,
+				`${process.env.VITE_BACKEND_BASE_URL}/api/user/login`,
 				{ email, password },
 				config
 			);

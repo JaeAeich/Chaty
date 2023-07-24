@@ -39,7 +39,7 @@ const GroupModal = ({ handleModal }) => {
 				},
 			};
 			const { data } = await axios.get(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/user?search=${search}`,
+				`${process.env.VITE_BACKEND_BASE_URL}/api/user?search=${search}`,
 				config
 			);
 			setLoading(false);
@@ -66,7 +66,7 @@ const GroupModal = ({ handleModal }) => {
 				},
 			};
 			const { data } = await axios.post(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/chat/group`,
+				`${process.env.VITE_BACKEND_BASE_URL}/api/chat/group`,
 				{
 					name: groupChatName,
 					users: JSON.stringify(selectedUsers.map((u) => u._id)),

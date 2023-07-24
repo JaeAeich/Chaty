@@ -95,7 +95,7 @@ function Signup() {
 			};
 
 			const { data } = await axios.post(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/user`,
+				`${process.env.VITE_BACKEND_BASE_URL}/api/user`,
 				{
 					name,
 					email,

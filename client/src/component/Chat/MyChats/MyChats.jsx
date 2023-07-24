@@ -28,7 +28,7 @@ function MyChats({ fetchAgain }) {
 			};
 
 			const { data } = await axios.get(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/chat`,
+				`${process.env.VITE_BACKEND_BASE_URL}/api/chat`,
 				config
 			);
 			setChats(data);
