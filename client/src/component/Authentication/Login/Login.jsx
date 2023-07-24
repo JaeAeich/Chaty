@@ -11,7 +11,8 @@ function Login() {
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 
-	const submitHandler = async () => {
+	const submitHandler = async (e) => {
+		e.preventDefault();
 		setLoading(true);
 		if (!email || !password) {
 			toast.error('Please fill all fields', {
@@ -50,20 +51,25 @@ function Login() {
 		}
 	};
 
-	const submitGuest = async () => {
+	const submitGuest = async (e) => {
+		e.preventDefault();
 		setLoading(true);
 		try {
-			const email = process.env.VITE_GUEST_EMAIL;
-			const password = process.env.VITE_GUEST_PASSWORD;
+			const guestEmail = process.env.VITE_GUEST_EMAIL;
+			const guestPassword = process.env.VITE_GUEST_PASSWORD;
+
 			const config = {
 				headers: {
 					'Content-type': 'application/json',
 				},
 			};
 
+			setEmail(guestEmail); // This will update the input field with the guest email
+			setPassword(guestPassword); // This will update the input field with the guest password
+
 			const { data } = await axios.post(
 				`${process.env.VITE_BACKEND_BASE_URL}/api/user/login`,
-				{ email, password },
+				{ email: guestEmail, password: guestPassword },
 				config
 			);
 
@@ -76,7 +82,7 @@ function Login() {
 			setLoading(false);
 			navigate('/chat');
 		} catch (error) {
-			toast.error('Some error occured!', {
+			toast.error('Some error occurred!', {
 				position: toast.POSITION.TOP_RIGHT,
 			});
 			setLoading(false);
@@ -85,7 +91,7 @@ function Login() {
 
 	return (
 		<div>
-			<form className='login-form'>
+			<form className='login-form' onSubmit={() => false}>
 				<div className='form-group'>
 					<label htmlFor='email'>Email:</label>
 					<input
@@ -93,7 +99,6 @@ function Login() {
 						id='email'
 						name='email'
 						onChange={(e) => setEmail(e.target.value)}
-						required
 					/>
 				</div>
 				<div className='form-group'>
@@ -103,22 +108,17 @@ function Login() {
 						id='password'
 						name='password'
 						onChange={(e) => setPassword(e.target.value)}
-						required
 					/>
 				</div>
 				<div className='login-button'>
 					{!loading && (
-						<button type='submit' onClick={submitHandler}>
+						<button type='submit' onClick={(e) => submitHandler(e)}>
 							Login
 						</button>
 					)}
-					{loading && (
-						<button type='submit' onClick={submitHandler}>
-							Please Wait
-						</button>
-					)}
+					{loading && <button disabled>Please Wait</button>}
 					{!loading && (
-						<button type='submit' onClick={submitGuest}>
+						<button type='submit' onClick={(e) => submitGuest(e)}>
 							Guest User
 						</button>
 					)}
