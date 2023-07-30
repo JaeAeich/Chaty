@@ -36,7 +36,7 @@ const GroupInfoModal = ({
 				},
 			};
 			const { data } = await axios.get(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/user?search=${search}`,
+				`${process.env.VITE_BACKEND_BASE_URL}/api/user?search=${search}`,
 				config
 			);
 			setLoading(false);
@@ -58,7 +58,7 @@ const GroupInfoModal = ({
 				},
 			};
 			const { data } = await axios.put(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/chat/rename`,
+				`${process.env.VITE_BACKEND_BASE_URL}/api/chat/rename`,
 				{
 					chatId: selectedChat._id,
 					chatName: groupChatName,
@@ -95,7 +95,7 @@ const GroupInfoModal = ({
 				},
 			};
 			const { data } = await axios.put(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/chat/groupadd`,
+				`${process.env.VITE_BACKEND_BASE_URL}/api/chat/groupadd`,
 				{
 					chatId: selectedChat._id,
 					userId: user1._id,
@@ -127,7 +127,7 @@ const GroupInfoModal = ({
 				},
 			};
 			const { data } = await axios.put(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/chat/groupremove`,
+				`${process.env.VITE_BACKEND_BASE_URL}/api/chat/groupremove`,
 				{
 					chatId: selectedChat._id,
 					userId: user1._id,

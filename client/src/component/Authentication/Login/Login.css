@@ -47,4 +47,18 @@
 }
 .login-form button[type=submit]:active {
   background-color: var(--color-cta);
+}
+.login-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.5s, color 0.5s;
+}
+.login-form button:hover {
+  border-radius: 0.6em;
+  background-color: var(--color-accent);
 }/*# sourceMappingURL=Login.css.map */

@@ -49,7 +49,7 @@ function Drawer() {
 				},
 			};
 			const { data } = await axios.post(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/chat`,
+				`${process.env.VITE_BACKEND_BASE_URL}/api/chat`,
 				{ userId },
 				config
 			);
@@ -81,7 +81,7 @@ function Drawer() {
 			};
 
 			const { data } = await axios.get(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/user?search=${search}`,
+				`${process.env.VITE_BACKEND_BASE_URL}/api/user?search=${search}`,
 				config
 			);
 

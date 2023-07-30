@@ -40,7 +40,7 @@ const CurrentChat = ({ fetchAgain, setFetchAgain }) => {
 			setLoading(true);
 
 			const { data } = await axios.get(
-				`${import.meta.env.VITE_BACKEND_BASE_URL}/api/message/${
+				`${process.env.VITE_BACKEND_BASE_URL}/api/message/${
 					selectedChat._id
 				}`,
 				config
@@ -67,7 +67,7 @@ const CurrentChat = ({ fetchAgain, setFetchAgain }) => {
 				};
 				setNewMessage('');
 				const { data } = await axios.post(
-					`${import.meta.env.VITE_BACKEND_BASE_URL}/api/message`,
+					`${process.env.VITE_BACKEND_BASE_URL}/api/message`,
 					{
 						content: newMessage,
 						chatId: selectedChat,
@@ -83,7 +83,7 @@ const CurrentChat = ({ fetchAgain, setFetchAgain }) => {
 	};
 
 	useEffect(() => {
-		socket = io(import.meta.env.VITE_BACKEND_BASE_URL);
+		socket = io(process.env.VITE_BACKEND_BASE_URL);
 		socket.emit('setup', user);
 		socket.on('connected', () => setSocketConnected(true));
 		socket.on('typing', () => setIsTyping(true));

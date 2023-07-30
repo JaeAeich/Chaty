@@ -40,7 +40,7 @@
 		border: none;
 		cursor: pointer;
 		transition: background-color 0.5s, color 0.5s;
-		
+
 		&.active {
 			color: var(--color-bg);
 			background-color: var(--color-accent);
@@ -53,6 +53,22 @@
 
 		&:active {
 			background-color: var(--color-cta);
+		}
+	}
+
+	button {
+		display: block;
+		width: 100%;
+		padding: 10px;
+		background-color: var(--color-accent);
+		color: white;
+		border: none;
+		cursor: pointer;
+		transition: background-color 0.5s, color 0.5s;
+
+		&:hover {
+			border-radius: 0.6em;
+			background-color: var(--color-accent);
 		}
 	}
 }
